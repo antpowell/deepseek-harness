@@ -39,6 +39,9 @@ allowBuilds:
   '@google/genai': false
   protobufjs: false
   node-addon-require-builtin: false
+  # Workspace devDep pinning the pnpm CLI; its lifecycle script is a no-op for
+  # the bin shim we actually use, so deny it — install still succeeds.
+  pnpm: false
   # JSONL durability calls MoveFileExW with write-through publication on Windows.
   # Consumers pin 3.1.1: Koffi 3.3.2's source build fails under GCC 13 when
   # optional prebuilts are omitted. Upgrade all consumers together after the
