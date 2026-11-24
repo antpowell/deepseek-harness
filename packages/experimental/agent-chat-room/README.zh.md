@@ -7,7 +7,7 @@ kind: "package-reference"
 
 [English](README.md) | 中文
 
-## 摘要
+## 概述
 
 `dsh-agent-chat-room` 为 DeepSeek Harness 会话添加一个共享聊天室。用户是**总调度员（Head Orchestrator）**：在调度员聊天框中输入的消息会广播给所有房间成员，智能体则通过 `agent_chat_post` 工具回复。所有聊天记录都会持久化到调度员会话并在 Chat 视图中渲染。
 
@@ -17,6 +17,7 @@ kind: "package-reference"
 - [理解实现](#understand-the-implementation)
 - [模型体验](#model-experience)
 - [已知限制与待办工作](#known-limitations-and-deferred-work)
+- [开发备注](#dev-note)
 
 ## 使用本包
 
@@ -106,3 +107,13 @@ You are a member of an agent chat room. The user is the Head Orchestrator and th
 - **调度员会将转发消息视为用户收件箱项** —— 根智能体通过 `sendMessage` 接收同伴广播，可能会因此响应。用户可以指示调度员将带有 `[Room] name:` 前缀的消息视为房间流量。
 - **客户端渲染器较简单** —— 会话节点只显示作者、角色和文本，不支持 threading、回应或已读回执。
 - **房间仅存在于内存中** —— 重启 host 会关闭所有活跃房间；历史消息保留在调度员会话日志中。
+
+<a id="dev-note"></a>
+### 开发备注
+
+<details>
+<summary>维护者的工作上下文——点击展开</summary>
+
+无。
+
+</details>

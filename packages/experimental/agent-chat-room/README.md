@@ -17,6 +17,7 @@ English | [中文](README.zh.md)
 - [Understand the implementation](#understand-the-implementation)
 - [Model Experience](#model-experience)
 - [Known Limitations and Deferred Work](#known-limitations-and-deferred-work)
+- [Dev Note](#dev-note)
 
 ## Use this package
 
@@ -106,3 +107,13 @@ The fixed system prompt sections are prefix-stable for the agents that carry the
 - **Orchestrator sees forwarded messages as user inbox items** — the root agent receives peer broadcasts through `sendMessage`, which may cause it to respond. Users should instruct the orchestrator to treat `[Room] name:` prefixed messages as room traffic.
 - **Client renderer is minimal** — the conversation node shows author, role, and text but does not support threading, reactions, or read receipts.
 - **Rooms are in-memory only** — restarting the host closes all active rooms; historical messages remain in the orchestrator session log.
+
+<a id="dev-note"></a>
+### Dev Note
+
+<details>
+<summary>Working context for maintainers — click to expand</summary>
+
+None.
+
+</details>

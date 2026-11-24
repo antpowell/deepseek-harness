@@ -10,10 +10,10 @@
   zh: eebcdcb4479a2407
 /deepseek-ai-dsh-agent-chat-room/summary:
   en: a165cfec4510d0a2
-  zh: e36ec5e5154f758f
+  zh: 3155ae3c884fab68
 /deepseek-ai-dsh-agent-chat-room/table-of-contents:
-  en: fe1ecb09a73d1c7a
-  zh: 13f25954c5162d41
+  en: cbfb676bb9a7a2de
+  zh: 412ef7126a80dcf7
 /deepseek-ai-dsh-agent-chat-room/use-this-package:
   en: bbff250eba0f1b89
   zh: 0a618f05cc88ee2b
@@ -51,5 +51,8 @@
   en: 6b759cfe9ae69f9d
   zh: 026b3cbe03177aad
 /deepseek-ai-dsh-agent-chat-room/known-limitations-and-deferred-work:
-  en: 8e1f84666eb17892
-  zh: cc6594121159acb9
+  en: 7a76b2436bd684fc
+  zh: 14c5aa34166f8935
+/deepseek-ai-dsh-agent-chat-room/known-limitations-and-deferred-work/dev-note:
+  en: e67f633dc6fe7773
+  zh: 3bb0c20c93f16f98
