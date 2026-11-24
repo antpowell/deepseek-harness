@@ -14,18 +14,47 @@ import { testProfileResolution } from './profiles/headless/tests/profile-resolut
 const repoRoot = fileURLToPath(new URL('../../../', import.meta.url))
 const dshSourceBin = 'apps/cli/src/bin.ts'
 
-describe('dsh SOURCE launcher (node --import tsx/esm)', () => {
+describe('dsh SOURCE launcher (node --expose-internals --import tsx/esm)', () => {
   testProfileResolution('src')
 
   it('launches the source CLI without building', async () => {
     const rootPackage = JSON.parse(await readFile(new URL('../../../package.json', import.meta.url), 'utf8')) as {
       readonly scripts?: Record<string, string>
     }
-    expect(rootPackage.scripts?.dsh).toBe('node --import tsx/esm apps/cli/src/bin.ts')
+    expect(rootPackage.scripts?.dsh).toBe('node --expose-internals --import tsx/esm apps/cli/src/bin.ts')
   })
 
+  it('uses exposed internals without loading the native addon', async () => {
+    const resolverUrl = new URL('../../../packages/boot/app-boot/src/profile-resolution/resolver.ts', import.meta.url).href
+    const probe = `
+      import Module, { createRequire } from 'node:module'
+      const require = createRequire(process.cwd() + '/probe.cjs')
+      const addonId = require.resolve('node-addon-require-builtin')
+      const addon = new Module(addonId)
+      addon.filename = addonId
+      addon.loaded = true
+      addon.exports = { requireBuiltin: () => { throw new Error('native addon must not load') } }
+      require.cache[addonId] = addon
+      const { installRuntimeInterception } = await import(${JSON.stringify(resolverUrl)})
+      const registration = installRuntimeInterception({
+        profilesDir: '/profiles', profileDir: '/profiles/test', localPackageNames: [], linkedRoots: [], entries: [],
+      })
+      registration.dispose()
+      console.log('exposed internals resolution passed')
+    `
+    const result = await execa(process.execPath, [
+      '--expose-internals', '--import', 'tsx/esm', '--input-type=module', '--eval', probe,
+    ], {
+      cwd: repoRoot, timeout: 25_000, killSignal: 'SIGKILL', reject: false,
+    })
+    expect(result.timedOut, result.stderr).toBe(false)
+    expect(result.signal, result.stderr).toBeUndefined()
+    expect(result.exitCode, result.stderr).toBe(0)
+    expect(result.stdout).toBe('exposed internals resolution passed')
+  }, 30_000)
+
   it('boots the source entry and requires a profile', async () => {
-    const result = await execa(process.execPath, ['--import', 'tsx/esm', dshSourceBin], {
+    const result = await execa(process.execPath, ['--expose-internals', '--import', 'tsx/esm', dshSourceBin], {
       cwd: repoRoot,
       input: '',
       timeout: 25_000,

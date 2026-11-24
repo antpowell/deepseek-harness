@@ -252,6 +252,7 @@ export function testProfileResolution(mode: ExampleMode): void {
           NODE_OPTIONS: undefined, TSX_TSCONFIG_PATH: undefined,
         },
       })
+      if (mode === 'src') launch.args.unshift('--expose-internals')
       const result = await execa(launch.command, launch.args, {
         cwd: repoRoot, env: launch.env, input: '', timeout: processTimeoutMs,
         killSignal: 'SIGKILL', reject: false,
@@ -293,7 +294,7 @@ export function testProfileResolution(mode: ExampleMode): void {
       expect(evidence.sourceLeafExplicitCjs).toBe(realpathSync.native(join(sourceDevLeaf, 'index.cjs')))
       expect(evidence.sourceLeafCjs).not.toBe(evidence.sourceLeafExplicitCjs)
       expect(evidence.executor).toBe(true)
-      expect(evidence.execArgv).toEqual(mode === 'src' ? launch.args.slice(0, 2) : [])
+      expect(evidence.execArgv).toEqual(mode === 'src' ? launch.args.slice(0, 3) : [])
       for (const name of ['tools', 'agent-loop']) {
         const selected = mode === 'src' ? 'src/index.ts' : 'lib/index.js'
         const other = mode === 'src' ? 'lib' : 'src'
