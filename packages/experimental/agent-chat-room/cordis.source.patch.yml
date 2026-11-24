@@ -1,0 +1,6 @@
+# Source overlay: add the agent chat room to a Web profile without a profile install.
+#
+#   pnpm dsh --profile web --patch ./packages/experimental/agent-chat-room/cordis.source.patch.yml
+- insert:
+    - id: agent-chat-room
+      name: './src/index.ts'

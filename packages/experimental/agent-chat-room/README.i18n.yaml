@@ -1,0 +1,55 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/experimental/agent-chat-room/README.md
+/:
+  en: c1f5c69bdc58e4a3
+  zh: 8409b1b8ff886a21
+/deepseek-ai-dsh-agent-chat-room:
+  en: 4fa341491909b588
+  zh: eebcdcb4479a2407
+/deepseek-ai-dsh-agent-chat-room/summary:
+  en: a165cfec4510d0a2
+  zh: e36ec5e5154f758f
+/deepseek-ai-dsh-agent-chat-room/table-of-contents:
+  en: fe1ecb09a73d1c7a
+  zh: 13f25954c5162d41
+/deepseek-ai-dsh-agent-chat-room/use-this-package:
+  en: bbff250eba0f1b89
+  zh: 0a618f05cc88ee2b
+/deepseek-ai-dsh-agent-chat-room/use-this-package/mount-from-this-checkout:
+  en: 3992b987a01ab37c
+  zh: 788018ec7f5351c2
+/deepseek-ai-dsh-agent-chat-room/use-this-package/starting-a-room:
+  en: 326933d8b7ffa74a
+  zh: 8d2e3b8703bc67d2
+/deepseek-ai-dsh-agent-chat-room/use-this-package/tools:
+  en: e3f2b76d940db5c5
+  zh: a01c058c06bc0d00
+/deepseek-ai-dsh-agent-chat-room/understand-the-implementation:
+  en: ee4615a04fa6503d
+  zh: ee2c5fb2204a43cf
+/deepseek-ai-dsh-agent-chat-room/understand-the-implementation/source-map:
+  en: 78f20a761498a48c
+  zh: 5c7c3c3014bd9f48
+/deepseek-ai-dsh-agent-chat-room/understand-the-implementation/design-notes:
+  en: a750ef6041851c7b
+  zh: a09dcebadcf57410
+/deepseek-ai-dsh-agent-chat-room/model-experience:
+  en: 215e7ba838619b7b
+  zh: a311da3843709f90
+/deepseek-ai-dsh-agent-chat-room/model-experience/chat-room-tools-and-system-prompt:
+  en: c044acddf1fcba81
+  zh: 099dfae0c82b5a6f
+/deepseek-ai-dsh-agent-chat-room/model-experience/chat-room-tools-and-system-prompt/what-the-model-sees:
+  en: d2da13efab86dc5d
+  zh: cae1901dc5299820
+/deepseek-ai-dsh-agent-chat-room/model-experience/chat-room-tools-and-system-prompt/token-effect:
+  en: 0b25889d5014ebfd
+  zh: 907600af27e4aeea
+/deepseek-ai-dsh-agent-chat-room/model-experience/chat-room-tools-and-system-prompt/kv-cache-effect:
+  en: 6b759cfe9ae69f9d
+  zh: 026b3cbe03177aad
+/deepseek-ai-dsh-agent-chat-room/known-limitations-and-deferred-work:
+  en: 8e1f84666eb17892
+  zh: cc6594121159acb9

@@ -1,0 +1,8 @@
+# Example Cordis patch to add the installed agent chat room package to a Web profile.
+# Copy this content into your profile's cordis.patch.yml or pass it with --patch.
+- insert:
+    - id: agent-chat-room
+      name: '@deepseek-ai/dsh-agent-chat-room'
+      config:
+        maxMembers: 16
+        maxMessageLength: 4096
